@@ -1,10 +1,19 @@
+#docstring - Kevin Zhang fighter jet database application
 import sqlite3
 
-db = sqlite3.connect("fighters.db")
-cursor = db.cursor()
-sql = "SELECT * FROM fighter;"
-cursor.execute(sql)
-results = cursor.fetchall()
-print(results)
+#variables
+DATABASE = "fighters.db"
 
-db.close()
+#functions
+def print_all_aircraft():
+    db = sqlite3.connect(DATABASE)
+    cursor = db.cursor()
+    sql = "SELECT * FROM fighter;"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    for fighter in results:
+        print(fighter)
+    db.close()
+
+#main code
+print_all_aircraft()
